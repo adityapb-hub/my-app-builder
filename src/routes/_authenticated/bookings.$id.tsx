@@ -343,19 +343,30 @@ function BookingDetail() {
                 <Button
                   className="mt-3 w-full rounded-full"
                   disabled={busy !== null || !price}
-                  onClick={() =>
-                    patch(
-                      {
+                  onClick={async () => {
+                    setBusy("complete");
+                    const { error } = await supabase
+                      .from("service_requests")
+                      .update({
                         status: "completed",
                         final_price: Number(price),
-                        jobs_completed: worker
-                          ? worker.jobs_completed + 1
-                          : undefined,
-                      },
-                      "complete",
-                      "Job closed. Nice work.",
-                    )
-                  }
+                      })
+                      .eq("id", booking.id);
+                    if (error) {
+                      setBusy(null);
+                      toast.error(error.message);
+                      return;
+                    }
+                    if (worker) {
+                      await supabase
+                        .from("service_providers")
+                        .update({ jobs_completed: worker.jobs_completed + 1 })
+                        .eq("id", worker.id);
+                    }
+                    setBusy(null);
+                    queryClient.invalidateQueries({ queryKey: ["coop"] });
+                    toast.success("Job closed. Nice work.");
+                  }}
                 >
                   Mark completed
                 </Button>

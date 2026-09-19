@@ -37,7 +37,7 @@ function RequestDetails() {
   const { data: providers = [] } = useProviders();
   const nearby = providers
     .filter((provider) => provider.category === category)
-    .sort((a, b) => Number(a.distance_km) - Number(b.distance_km));
+    .sort((a, b) => Number(b.rating) - Number(a.rating));
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">

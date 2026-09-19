@@ -66,7 +66,7 @@ export function ProviderCard({
             </span>
             <span className="inline-flex items-center gap-1">
               <MapPin className="size-3.5" />
-              {provider.area} · {Number(provider.distance_km).toFixed(1)} km
+              {provider.area}
             </span>
           </p>
 

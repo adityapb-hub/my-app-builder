@@ -14,16 +14,376 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      community_participants: {
+        Row: {
+          id: string
+          joined_at: string
+          task_id: string
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          joined_at?: string
+          task_id: string
+          user_id: string
+        }
+        Update: {
+          id?: string
+          joined_at?: string
+          task_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "community_participants_task_id_fkey"
+            columns: ["task_id"]
+            isOneToOne: false
+            referencedRelation: "community_tasks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      community_tasks: {
+        Row: {
+          apartment_name: string | null
+          category: string
+          cost_per_household: number
+          created_at: string
+          creator_id: string | null
+          creator_name: string
+          description: string | null
+          event_date: string | null
+          id: string
+          joined_count: number
+          location: string | null
+          seats_needed: number
+          status: string
+          title: string
+          updated_at: string
+          votes: number
+        }
+        Insert: {
+          apartment_name?: string | null
+          category?: string
+          cost_per_household?: number
+          created_at?: string
+          creator_id?: string | null
+          creator_name?: string
+          description?: string | null
+          event_date?: string | null
+          id?: string
+          joined_count?: number
+          location?: string | null
+          seats_needed?: number
+          status?: string
+          title: string
+          updated_at?: string
+          votes?: number
+        }
+        Update: {
+          apartment_name?: string | null
+          category?: string
+          cost_per_household?: number
+          created_at?: string
+          creator_id?: string | null
+          creator_name?: string
+          description?: string | null
+          event_date?: string | null
+          id?: string
+          joined_count?: number
+          location?: string | null
+          seats_needed?: number
+          status?: string
+          title?: string
+          updated_at?: string
+          votes?: number
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          request_id: string
+          sender_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          request_id: string
+          sender_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          request_id?: string
+          sender_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "service_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          area: string | null
+          avatar_url: string | null
+          city: string
+          created_at: string
+          full_name: string
+          id: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          area?: string | null
+          avatar_url?: string | null
+          city?: string
+          created_at?: string
+          full_name?: string
+          id: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          area?: string | null
+          avatar_url?: string | null
+          city?: string
+          created_at?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          comment: string | null
+          created_at: string
+          customer_id: string
+          id: string
+          provider_id: string
+          rating: number
+          request_id: string
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string
+          customer_id: string
+          id?: string
+          provider_id: string
+          rating: number
+          request_id: string
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string
+          customer_id?: string
+          id?: string
+          provider_id?: string
+          rating?: number
+          request_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_provider_id_fkey"
+            columns: ["provider_id"]
+            isOneToOne: false
+            referencedRelation: "service_providers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reviews_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: true
+            referencedRelation: "service_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      service_providers: {
+        Row: {
+          area: string | null
+          availability: string | null
+          available_now: boolean
+          avatar_url: string | null
+          bio: string | null
+          category: string
+          certificate_url: string | null
+          created_at: string
+          display_name: string
+          distance_km: number
+          experience_years: number
+          hourly_rate: number
+          id: string
+          id_document_url: string | null
+          jobs_completed: number
+          rating: number
+          rating_count: number
+          skills: string[]
+          updated_at: string
+          user_id: string | null
+          verified: boolean
+        }
+        Insert: {
+          area?: string | null
+          availability?: string | null
+          available_now?: boolean
+          avatar_url?: string | null
+          bio?: string | null
+          category: string
+          certificate_url?: string | null
+          created_at?: string
+          display_name: string
+          distance_km?: number
+          experience_years?: number
+          hourly_rate?: number
+          id?: string
+          id_document_url?: string | null
+          jobs_completed?: number
+          rating?: number
+          rating_count?: number
+          skills?: string[]
+          updated_at?: string
+          user_id?: string | null
+          verified?: boolean
+        }
+        Update: {
+          area?: string | null
+          availability?: string | null
+          available_now?: boolean
+          avatar_url?: string | null
+          bio?: string | null
+          category?: string
+          certificate_url?: string | null
+          created_at?: string
+          display_name?: string
+          distance_km?: number
+          experience_years?: number
+          hourly_rate?: number
+          id?: string
+          id_document_url?: string | null
+          jobs_completed?: number
+          rating?: number
+          rating_count?: number
+          skills?: string[]
+          updated_at?: string
+          user_id?: string | null
+          verified?: boolean
+        }
+        Relationships: []
+      }
+      service_requests: {
+        Row: {
+          address: string | null
+          area: string | null
+          category: string
+          created_at: string
+          customer_id: string
+          description: string | null
+          final_price: number | null
+          id: string
+          photo_urls: string[]
+          preferred_date: string | null
+          preferred_time: string | null
+          provider_id: string | null
+          quoted_price: number | null
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          area?: string | null
+          category: string
+          created_at?: string
+          customer_id: string
+          description?: string | null
+          final_price?: number | null
+          id?: string
+          photo_urls?: string[]
+          preferred_date?: string | null
+          preferred_time?: string | null
+          provider_id?: string | null
+          quoted_price?: number | null
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          area?: string | null
+          category?: string
+          created_at?: string
+          customer_id?: string
+          description?: string | null
+          final_price?: number | null
+          id?: string
+          photo_urls?: string[]
+          preferred_date?: string | null
+          preferred_time?: string | null
+          provider_id?: string | null
+          quoted_price?: number | null
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "service_requests_provider_id_fkey"
+            columns: ["provider_id"]
+            isOneToOne: false
+            referencedRelation: "service_providers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      community_vote: { Args: { p_task: string }; Returns: undefined }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "seeker" | "provider" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +510,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["seeker", "provider", "admin"],
+    },
   },
 } as const

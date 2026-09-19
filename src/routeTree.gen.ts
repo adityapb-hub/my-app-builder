@@ -10,33 +10,244 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedAssistantRouteImport } from './routes/_authenticated/assistant'
+import { Route as AuthenticatedBookingsRouteImport } from './routes/_authenticated/bookings'
+import { Route as AuthenticatedCommunityRouteImport } from './routes/_authenticated/community'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedProviderRouteImport } from './routes/_authenticated/provider'
+import { Route as AuthenticatedProvidersRouteImport } from './routes/_authenticated/providers'
+import { Route as AuthenticatedRoleRouteImport } from './routes/_authenticated/role'
+import { Route as AuthenticatedServicesRouteImport } from './routes/_authenticated/services'
+import { Route as AuthenticatedBookingsIdRouteImport } from './routes/_authenticated/bookings.$id'
+import { Route as AuthenticatedCommunityIdRouteImport } from './routes/_authenticated/community.$id'
+import { Route as AuthenticatedProviderEarningsRouteImport } from './routes/_authenticated/provider.earnings'
+import { Route as AuthenticatedProviderRegisterRouteImport } from './routes/_authenticated/provider.register'
+import { Route as AuthenticatedProvidersIdRouteImport } from './routes/_authenticated/providers.$id'
+import { Route as AuthenticatedRequestCategoryRouteImport } from './routes/_authenticated/request.$category'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAssistantRoute = AuthenticatedAssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBookingsRoute = AuthenticatedBookingsRouteImport.update({
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCommunityRoute = AuthenticatedCommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProviderRoute = AuthenticatedProviderRouteImport.update({
+  id: '/provider',
+  path: '/provider',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProvidersRoute = AuthenticatedProvidersRouteImport.update({
+  id: '/providers',
+  path: '/providers',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRoleRoute = AuthenticatedRoleRouteImport.update({
+  id: '/role',
+  path: '/role',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedServicesRoute = AuthenticatedServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBookingsIdRoute = AuthenticatedBookingsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AuthenticatedBookingsRoute,
+} as any)
+const AuthenticatedCommunityIdRoute =
+  AuthenticatedCommunityIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => AuthenticatedCommunityRoute,
+  } as any)
+const AuthenticatedProviderEarningsRoute =
+  AuthenticatedProviderEarningsRouteImport.update({
+    id: '/earnings',
+    path: '/earnings',
+    getParentRoute: () => AuthenticatedProviderRoute,
+  } as any)
+const AuthenticatedProviderRegisterRoute =
+  AuthenticatedProviderRegisterRouteImport.update({
+    id: '/register',
+    path: '/register',
+    getParentRoute: () => AuthenticatedProviderRoute,
+  } as any)
+const AuthenticatedProvidersIdRoute =
+  AuthenticatedProvidersIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => AuthenticatedProvidersRoute,
+  } as any)
+const AuthenticatedRequestCategoryRoute =
+  AuthenticatedRequestCategoryRouteImport.update({
+    id: '/request/$category',
+    path: '/request/$category',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/assistant': typeof AuthenticatedAssistantRoute
+  '/bookings': typeof AuthenticatedBookingsRouteWithChildren
+  '/community': typeof AuthenticatedCommunityRouteWithChildren
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/provider': typeof AuthenticatedProviderRouteWithChildren
+  '/providers': typeof AuthenticatedProvidersRouteWithChildren
+  '/role': typeof AuthenticatedRoleRoute
+  '/services': typeof AuthenticatedServicesRoute
+  '/bookings/$id': typeof AuthenticatedBookingsIdRoute
+  '/community/$id': typeof AuthenticatedCommunityIdRoute
+  '/provider/earnings': typeof AuthenticatedProviderEarningsRoute
+  '/provider/register': typeof AuthenticatedProviderRegisterRoute
+  '/providers/$id': typeof AuthenticatedProvidersIdRoute
+  '/request/$category': typeof AuthenticatedRequestCategoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/assistant': typeof AuthenticatedAssistantRoute
+  '/bookings': typeof AuthenticatedBookingsRouteWithChildren
+  '/community': typeof AuthenticatedCommunityRouteWithChildren
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/provider': typeof AuthenticatedProviderRouteWithChildren
+  '/providers': typeof AuthenticatedProvidersRouteWithChildren
+  '/role': typeof AuthenticatedRoleRoute
+  '/services': typeof AuthenticatedServicesRoute
+  '/bookings/$id': typeof AuthenticatedBookingsIdRoute
+  '/community/$id': typeof AuthenticatedCommunityIdRoute
+  '/provider/earnings': typeof AuthenticatedProviderEarningsRoute
+  '/provider/register': typeof AuthenticatedProviderRegisterRoute
+  '/providers/$id': typeof AuthenticatedProvidersIdRoute
+  '/request/$category': typeof AuthenticatedRequestCategoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/assistant': typeof AuthenticatedAssistantRoute
+  '/_authenticated/bookings': typeof AuthenticatedBookingsRouteWithChildren
+  '/_authenticated/community': typeof AuthenticatedCommunityRouteWithChildren
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/provider': typeof AuthenticatedProviderRouteWithChildren
+  '/_authenticated/providers': typeof AuthenticatedProvidersRouteWithChildren
+  '/_authenticated/role': typeof AuthenticatedRoleRoute
+  '/_authenticated/services': typeof AuthenticatedServicesRoute
+  '/_authenticated/bookings/$id': typeof AuthenticatedBookingsIdRoute
+  '/_authenticated/community/$id': typeof AuthenticatedCommunityIdRoute
+  '/_authenticated/provider/earnings': typeof AuthenticatedProviderEarningsRoute
+  '/_authenticated/provider/register': typeof AuthenticatedProviderRegisterRoute
+  '/_authenticated/providers/$id': typeof AuthenticatedProvidersIdRoute
+  '/_authenticated/request/$category': typeof AuthenticatedRequestCategoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/assistant'
+    | '/bookings'
+    | '/community'
+    | '/dashboard'
+    | '/provider'
+    | '/providers'
+    | '/role'
+    | '/services'
+    | '/bookings/$id'
+    | '/community/$id'
+    | '/provider/earnings'
+    | '/provider/register'
+    | '/providers/$id'
+    | '/request/$category'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/assistant'
+    | '/bookings'
+    | '/community'
+    | '/dashboard'
+    | '/provider'
+    | '/providers'
+    | '/role'
+    | '/services'
+    | '/bookings/$id'
+    | '/community/$id'
+    | '/provider/earnings'
+    | '/provider/register'
+    | '/providers/$id'
+    | '/request/$category'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/reset-password'
+    | '/_authenticated/assistant'
+    | '/_authenticated/bookings'
+    | '/_authenticated/community'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/provider'
+    | '/_authenticated/providers'
+    | '/_authenticated/role'
+    | '/_authenticated/services'
+    | '/_authenticated/bookings/$id'
+    | '/_authenticated/community/$id'
+    | '/_authenticated/provider/earnings'
+    | '/_authenticated/provider/register'
+    | '/_authenticated/providers/$id'
+    | '/_authenticated/request/$category'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +259,216 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/assistant': {
+      id: '/_authenticated/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AuthenticatedAssistantRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/bookings': {
+      id: '/_authenticated/bookings'
+      path: '/bookings'
+      fullPath: '/bookings'
+      preLoaderRoute: typeof AuthenticatedBookingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/community': {
+      id: '/_authenticated/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof AuthenticatedCommunityRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/provider': {
+      id: '/_authenticated/provider'
+      path: '/provider'
+      fullPath: '/provider'
+      preLoaderRoute: typeof AuthenticatedProviderRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/providers': {
+      id: '/_authenticated/providers'
+      path: '/providers'
+      fullPath: '/providers'
+      preLoaderRoute: typeof AuthenticatedProvidersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/role': {
+      id: '/_authenticated/role'
+      path: '/role'
+      fullPath: '/role'
+      preLoaderRoute: typeof AuthenticatedRoleRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/services': {
+      id: '/_authenticated/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof AuthenticatedServicesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/bookings/$id': {
+      id: '/_authenticated/bookings/$id'
+      path: '/$id'
+      fullPath: '/bookings/$id'
+      preLoaderRoute: typeof AuthenticatedBookingsIdRouteImport
+      parentRoute: typeof AuthenticatedBookingsRoute
+    }
+    '/_authenticated/community/$id': {
+      id: '/_authenticated/community/$id'
+      path: '/$id'
+      fullPath: '/community/$id'
+      preLoaderRoute: typeof AuthenticatedCommunityIdRouteImport
+      parentRoute: typeof AuthenticatedCommunityRoute
+    }
+    '/_authenticated/provider/earnings': {
+      id: '/_authenticated/provider/earnings'
+      path: '/earnings'
+      fullPath: '/provider/earnings'
+      preLoaderRoute: typeof AuthenticatedProviderEarningsRouteImport
+      parentRoute: typeof AuthenticatedProviderRoute
+    }
+    '/_authenticated/provider/register': {
+      id: '/_authenticated/provider/register'
+      path: '/register'
+      fullPath: '/provider/register'
+      preLoaderRoute: typeof AuthenticatedProviderRegisterRouteImport
+      parentRoute: typeof AuthenticatedProviderRoute
+    }
+    '/_authenticated/providers/$id': {
+      id: '/_authenticated/providers/$id'
+      path: '/$id'
+      fullPath: '/providers/$id'
+      preLoaderRoute: typeof AuthenticatedProvidersIdRouteImport
+      parentRoute: typeof AuthenticatedProvidersRoute
+    }
+    '/_authenticated/request/$category': {
+      id: '/_authenticated/request/$category'
+      path: '/request/$category'
+      fullPath: '/request/$category'
+      preLoaderRoute: typeof AuthenticatedRequestCategoryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedBookingsRouteChildren {
+  AuthenticatedBookingsIdRoute: typeof AuthenticatedBookingsIdRoute
+}
+
+const AuthenticatedBookingsRouteChildren: AuthenticatedBookingsRouteChildren = {
+  AuthenticatedBookingsIdRoute: AuthenticatedBookingsIdRoute,
+}
+
+const AuthenticatedBookingsRouteWithChildren =
+  AuthenticatedBookingsRoute._addFileChildren(
+    AuthenticatedBookingsRouteChildren,
+  )
+
+interface AuthenticatedCommunityRouteChildren {
+  AuthenticatedCommunityIdRoute: typeof AuthenticatedCommunityIdRoute
+}
+
+const AuthenticatedCommunityRouteChildren: AuthenticatedCommunityRouteChildren =
+  {
+    AuthenticatedCommunityIdRoute: AuthenticatedCommunityIdRoute,
+  }
+
+const AuthenticatedCommunityRouteWithChildren =
+  AuthenticatedCommunityRoute._addFileChildren(
+    AuthenticatedCommunityRouteChildren,
+  )
+
+interface AuthenticatedProviderRouteChildren {
+  AuthenticatedProviderEarningsRoute: typeof AuthenticatedProviderEarningsRoute
+  AuthenticatedProviderRegisterRoute: typeof AuthenticatedProviderRegisterRoute
+}
+
+const AuthenticatedProviderRouteChildren: AuthenticatedProviderRouteChildren = {
+  AuthenticatedProviderEarningsRoute: AuthenticatedProviderEarningsRoute,
+  AuthenticatedProviderRegisterRoute: AuthenticatedProviderRegisterRoute,
+}
+
+const AuthenticatedProviderRouteWithChildren =
+  AuthenticatedProviderRoute._addFileChildren(
+    AuthenticatedProviderRouteChildren,
+  )
+
+interface AuthenticatedProvidersRouteChildren {
+  AuthenticatedProvidersIdRoute: typeof AuthenticatedProvidersIdRoute
+}
+
+const AuthenticatedProvidersRouteChildren: AuthenticatedProvidersRouteChildren =
+  {
+    AuthenticatedProvidersIdRoute: AuthenticatedProvidersIdRoute,
+  }
+
+const AuthenticatedProvidersRouteWithChildren =
+  AuthenticatedProvidersRoute._addFileChildren(
+    AuthenticatedProvidersRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAssistantRoute: typeof AuthenticatedAssistantRoute
+  AuthenticatedBookingsRoute: typeof AuthenticatedBookingsRouteWithChildren
+  AuthenticatedCommunityRoute: typeof AuthenticatedCommunityRouteWithChildren
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedProviderRoute: typeof AuthenticatedProviderRouteWithChildren
+  AuthenticatedProvidersRoute: typeof AuthenticatedProvidersRouteWithChildren
+  AuthenticatedRoleRoute: typeof AuthenticatedRoleRoute
+  AuthenticatedServicesRoute: typeof AuthenticatedServicesRoute
+  AuthenticatedRequestCategoryRoute: typeof AuthenticatedRequestCategoryRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAssistantRoute: AuthenticatedAssistantRoute,
+  AuthenticatedBookingsRoute: AuthenticatedBookingsRouteWithChildren,
+  AuthenticatedCommunityRoute: AuthenticatedCommunityRouteWithChildren,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedProviderRoute: AuthenticatedProviderRouteWithChildren,
+  AuthenticatedProvidersRoute: AuthenticatedProvidersRouteWithChildren,
+  AuthenticatedRoleRoute: AuthenticatedRoleRoute,
+  AuthenticatedServicesRoute: AuthenticatedServicesRoute,
+  AuthenticatedRequestCategoryRoute: AuthenticatedRequestCategoryRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

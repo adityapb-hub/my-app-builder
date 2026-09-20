@@ -288,20 +288,72 @@ export function useCommunityTasks() {
   return useQuery({
     queryKey: ["coop", "community", uid],
     queryFn: async () => {
-      const { data } = await supabase
-        .from("community_tasks")
-        .select("*")
-        .order("created_at", { ascending: false });
-      const tasks = (data ?? []) as unknown as CommunityTask[];
-      if (!uid) return tasks.map((t) => ({ ...t, joined: false }));
-      const { data: mine } = await supabase
-        .from("community_participants")
-        .select("task_id")
-        .eq("user_id", uid);
-      const joined = new Set((mine ?? []).map((row) => row.task_id));
-      return tasks.map((t) => ({ ...t, joined: joined.has(t.id) }));
+      const [tasksRes, membersRes, votesRes] = await Promise.all([
+        supabase
+          .from("community_tasks")
+          .select("*")
+          .order("created_at", { ascending: false }),
+        supabase.from("community_participants").select("task_id, user_id"),
+        supabase.from("community_votes").select("task_id, user_id"),
+      ]);
+
+      const tasks = (tasksRes.data ?? []) as unknown as CommunityTask[];
+      const members = membersRes.data ?? [];
+      const votes = votesRes.data ?? [];
+
+      return tasks.map((task) => {
+        const taskMembers = members.filter((row) => row.task_id === task.id);
+        const taskVotes = votes.filter((row) => row.task_id === task.id);
+        return {
+          ...task,
+          joined_count: taskMembers.length,
+          votes: taskVotes.length,
+          joined: !!uid && taskMembers.some((row) => row.user_id === uid),
+          voted: !!uid && taskVotes.some((row) => row.user_id === uid),
+        };
+      });
     },
   });
+}
+
+/** Add or remove the signed-in household from a community task. */
+export async function setTaskMembership(
+  taskId: string,
+  userId: string,
+  join: boolean,
+) {
+  if (join) {
+    const { error } = await supabase
+      .from("community_participants")
+      .insert({ task_id: taskId, user_id: userId });
+    return error;
+  }
+  const { error } = await supabase
+    .from("community_participants")
+    .delete()
+    .eq("task_id", taskId)
+    .eq("user_id", userId);
+  return error;
+}
+
+/** Cast or withdraw the signed-in household's vote on a community task. */
+export async function setTaskVote(
+  taskId: string,
+  userId: string,
+  vote: boolean,
+) {
+  if (vote) {
+    const { error } = await supabase
+      .from("community_votes")
+      .insert({ task_id: taskId, user_id: userId });
+    return error;
+  }
+  const { error } = await supabase
+    .from("community_votes")
+    .delete()
+    .eq("task_id", taskId)
+    .eq("user_id", userId);
+  return error;
 }
 
 export function useMessages(requestId?: string) {

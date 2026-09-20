@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "CoopConnect — Connecting Communities with Trusted Local Services",
+        title: "HomeEase — Connecting Communities with Trusted Local Services",
       },
       {
         name: "description",
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "CoopConnect — Connecting Communities with Trusted Local Services",
+        content: "HomeEase — Connecting Communities with Trusted Local Services",
       },
       {
         property: "og:description",
@@ -43,7 +43,7 @@ function Index() {
           <div className="cc-rise">
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm">
               <span className="size-1.5 rounded-full bg-success cc-live" />
-              Serving Kolkata neighbourhoods
+              Serving Tumakuru neighbourhoods
             </span>
 
             <h1 className="mt-6 font-display text-5xl font-extrabold leading-[1.03] tracking-tight text-balance sm:text-6xl">

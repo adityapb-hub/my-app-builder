@@ -1,6 +1,8 @@
 import {
   Brush,
+  Fan,
   GraduationCap,
+  Hammer,
   HeartHandshake,
   Leaf,
   Plus,
@@ -13,14 +15,16 @@ import {
 } from "lucide-react";
 
 export type CategoryId =
-  | "plumbing"
   | "electrical"
+  | "plumbing"
+  | "carpenter"
   | "cleaning"
-  | "gardening"
-  | "tutor"
+  | "ac-repair"
   | "appliance"
-  | "elder-care"
   | "painting"
+  | "tutor"
+  | "gardening"
+  | "elder-care"
   | "moving"
   | "other";
 
@@ -31,29 +35,79 @@ export type Category = {
   icon: LucideIcon;
   /** Typical charge range shown before a provider quotes. */
   range: [number, number];
+  /** Typical arrival window in Tumakuru city. */
+  eta: string;
+  /** Shown in the emergency strip on the dashboard. */
+  emergency?: boolean;
 };
 
 export const CATEGORIES: Category[] = [
-  {
-    id: "plumbing",
-    label: "Plumbing",
-    blurb: "Leaks, taps, drains, tanks",
-    icon: Wrench,
-    range: [250, 900],
-  },
   {
     id: "electrical",
     label: "Electrician",
     blurb: "Wiring, fans, inverters, MCBs",
     icon: Zap,
     range: [280, 1200],
+    eta: "30–45 min",
+    emergency: true,
+  },
+  {
+    id: "plumbing",
+    label: "Plumber",
+    blurb: "Leaks, taps, drains, tanks",
+    icon: Wrench,
+    range: [250, 900],
+    eta: "30–60 min",
+    emergency: true,
+  },
+  {
+    id: "carpenter",
+    label: "Carpenter",
+    blurb: "Doors, wardrobes, furniture",
+    icon: Hammer,
+    range: [300, 1500],
+    eta: "2–4 hrs",
   },
   {
     id: "cleaning",
-    label: "Cleaning",
+    label: "House Cleaning",
     blurb: "Deep clean, weekly housekeeping",
     icon: Sparkles,
     range: [250, 1500],
+    eta: "Same day",
+  },
+  {
+    id: "ac-repair",
+    label: "AC Repair",
+    blurb: "Service, gas refill, installation",
+    icon: Fan,
+    range: [400, 2500],
+    eta: "1–3 hrs",
+    emergency: true,
+  },
+  {
+    id: "appliance",
+    label: "Appliance Repair",
+    blurb: "Washer, fridge, chimney, oven",
+    icon: WashingMachine,
+    range: [400, 1800],
+    eta: "2–5 hrs",
+  },
+  {
+    id: "painting",
+    label: "Home Painting",
+    blurb: "Interior, putty, waterproofing",
+    icon: Brush,
+    range: [380, 3000],
+    eta: "Next day",
+  },
+  {
+    id: "tutor",
+    label: "Tutor Services",
+    blurb: "Maths, science, languages, PUC",
+    icon: GraduationCap,
+    range: [350, 900],
+    eta: "Scheduled",
   },
   {
     id: "gardening",
@@ -61,20 +115,7 @@ export const CATEGORIES: Category[] = [
     blurb: "Lawns, terraces, replanting",
     icon: Leaf,
     range: [220, 800],
-  },
-  {
-    id: "tutor",
-    label: "Home Tutor",
-    blurb: "Maths, science, languages",
-    icon: GraduationCap,
-    range: [350, 900],
-  },
-  {
-    id: "appliance",
-    label: "Appliance Repair",
-    blurb: "Washer, fridge, AC, chimney",
-    icon: WashingMachine,
-    range: [400, 1800],
+    eta: "Same day",
   },
   {
     id: "elder-care",
@@ -82,20 +123,15 @@ export const CATEGORIES: Category[] = [
     blurb: "Companionship, medication, mobility",
     icon: HeartHandshake,
     range: [500, 2000],
-  },
-  {
-    id: "painting",
-    label: "Painting",
-    blurb: "Interior, putty, waterproofing",
-    icon: Brush,
-    range: [380, 3000],
+    eta: "Scheduled",
   },
   {
     id: "moving",
     label: "Moving Assistance",
-    blurb: "Packing, van, shifting day",
+    blurb: "Packing, tempo, shifting day",
     icon: Truck,
     range: [900, 4000],
+    eta: "Next day",
   },
   {
     id: "other",
@@ -103,6 +139,7 @@ export const CATEGORIES: Category[] = [
     blurb: "Something else entirely",
     icon: Plus,
     range: [200, 1000],
+    eta: "Same day",
   },
 ];
 
@@ -113,6 +150,18 @@ export const CATEGORY_MAP: Record<CategoryId, Category> = CATEGORIES.reduce(
   },
   {} as Record<CategoryId, Category>,
 );
+
+/** Neighbourhoods HomeEase covers in Tumakuru, Karnataka. */
+export const TUMAKURU_AREAS = [
+  "SIT Area",
+  "Ashok Nagar",
+  "Kyathsandra",
+  "SS Puram",
+  "Gandhi Nagar",
+  "Batawadi",
+  "Gubbi Gate",
+  "Ring Road",
+] as const;
 
 export function categoryLabel(id: string): string {
   return CATEGORY_MAP[id as CategoryId]?.label ?? "General help";

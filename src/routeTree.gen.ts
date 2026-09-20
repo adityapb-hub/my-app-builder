@@ -11,8 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAssistantRouteImport } from './routes/_authenticated/assistant'
 import { Route as AuthenticatedBookingsRouteImport } from './routes/_authenticated/bookings'
 import { Route as AuthenticatedCommunityRouteImport } from './routes/_authenticated/community'
@@ -20,7 +24,6 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedProviderRouteImport } from './routes/_authenticated/provider'
 import { Route as AuthenticatedProvidersRouteImport } from './routes/_authenticated/providers'
 import { Route as AuthenticatedRoleRouteImport } from './routes/_authenticated/role'
-import { Route as AuthenticatedServicesRouteImport } from './routes/_authenticated/services'
 import { Route as AuthenticatedBookingsIdRouteImport } from './routes/_authenticated/bookings.$id'
 import { Route as AuthenticatedCommunityIdRouteImport } from './routes/_authenticated/community.$id'
 import { Route as AuthenticatedProviderEarningsRouteImport } from './routes/_authenticated/provider.earnings'
@@ -37,15 +40,35 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedAssistantRoute = AuthenticatedAssistantRouteImport.update({
   id: '/assistant',
@@ -80,11 +103,6 @@ const AuthenticatedProvidersRoute = AuthenticatedProvidersRouteImport.update({
 const AuthenticatedRoleRoute = AuthenticatedRoleRouteImport.update({
   id: '/role',
   path: '/role',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedServicesRoute = AuthenticatedServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedBookingsIdRoute = AuthenticatedBookingsIdRouteImport.update({
@@ -125,8 +143,12 @@ const AuthenticatedRequestCategoryRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/assistant': typeof AuthenticatedAssistantRoute
   '/bookings': typeof AuthenticatedBookingsRouteWithChildren
   '/community': typeof AuthenticatedCommunityRouteWithChildren
@@ -134,7 +156,6 @@ export interface FileRoutesByFullPath {
   '/provider': typeof AuthenticatedProviderRouteWithChildren
   '/providers': typeof AuthenticatedProvidersRouteWithChildren
   '/role': typeof AuthenticatedRoleRoute
-  '/services': typeof AuthenticatedServicesRoute
   '/bookings/$id': typeof AuthenticatedBookingsIdRoute
   '/community/$id': typeof AuthenticatedCommunityIdRoute
   '/provider/earnings': typeof AuthenticatedProviderEarningsRoute
@@ -144,8 +165,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/assistant': typeof AuthenticatedAssistantRoute
   '/bookings': typeof AuthenticatedBookingsRouteWithChildren
   '/community': typeof AuthenticatedCommunityRouteWithChildren
@@ -153,7 +178,6 @@ export interface FileRoutesByTo {
   '/provider': typeof AuthenticatedProviderRouteWithChildren
   '/providers': typeof AuthenticatedProvidersRouteWithChildren
   '/role': typeof AuthenticatedRoleRoute
-  '/services': typeof AuthenticatedServicesRoute
   '/bookings/$id': typeof AuthenticatedBookingsIdRoute
   '/community/$id': typeof AuthenticatedCommunityIdRoute
   '/provider/earnings': typeof AuthenticatedProviderEarningsRoute
@@ -165,8 +189,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/assistant': typeof AuthenticatedAssistantRoute
   '/_authenticated/bookings': typeof AuthenticatedBookingsRouteWithChildren
   '/_authenticated/community': typeof AuthenticatedCommunityRouteWithChildren
@@ -174,7 +202,6 @@ export interface FileRoutesById {
   '/_authenticated/provider': typeof AuthenticatedProviderRouteWithChildren
   '/_authenticated/providers': typeof AuthenticatedProvidersRouteWithChildren
   '/_authenticated/role': typeof AuthenticatedRoleRoute
-  '/_authenticated/services': typeof AuthenticatedServicesRoute
   '/_authenticated/bookings/$id': typeof AuthenticatedBookingsIdRoute
   '/_authenticated/community/$id': typeof AuthenticatedCommunityIdRoute
   '/_authenticated/provider/earnings': typeof AuthenticatedProviderEarningsRoute
@@ -186,8 +213,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/auth'
+    | '/contact'
     | '/reset-password'
+    | '/services'
+    | '/admin'
     | '/assistant'
     | '/bookings'
     | '/community'
@@ -195,7 +226,6 @@ export interface FileRouteTypes {
     | '/provider'
     | '/providers'
     | '/role'
-    | '/services'
     | '/bookings/$id'
     | '/community/$id'
     | '/provider/earnings'
@@ -205,8 +235,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/auth'
+    | '/contact'
     | '/reset-password'
+    | '/services'
+    | '/admin'
     | '/assistant'
     | '/bookings'
     | '/community'
@@ -214,7 +248,6 @@ export interface FileRouteTypes {
     | '/provider'
     | '/providers'
     | '/role'
-    | '/services'
     | '/bookings/$id'
     | '/community/$id'
     | '/provider/earnings'
@@ -225,8 +258,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/about'
     | '/auth'
+    | '/contact'
     | '/reset-password'
+    | '/services'
+    | '/_authenticated/admin'
     | '/_authenticated/assistant'
     | '/_authenticated/bookings'
     | '/_authenticated/community'
@@ -234,7 +271,6 @@ export interface FileRouteTypes {
     | '/_authenticated/provider'
     | '/_authenticated/providers'
     | '/_authenticated/role'
-    | '/_authenticated/services'
     | '/_authenticated/bookings/$id'
     | '/_authenticated/community/$id'
     | '/_authenticated/provider/earnings'
@@ -246,8 +282,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  ContactRoute: typeof ContactRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  ServicesRoute: typeof ServicesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -266,11 +305,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reset-password': {
@@ -279,6 +332,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/reset-password'
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/assistant': {
       id: '/_authenticated/assistant'
@@ -327,13 +394,6 @@ declare module '@tanstack/react-router' {
       path: '/role'
       fullPath: '/role'
       preLoaderRoute: typeof AuthenticatedRoleRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/services': {
-      id: '/_authenticated/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof AuthenticatedServicesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/bookings/$id': {
@@ -438,6 +498,7 @@ const AuthenticatedProvidersRouteWithChildren =
   )
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
   AuthenticatedAssistantRoute: typeof AuthenticatedAssistantRoute
   AuthenticatedBookingsRoute: typeof AuthenticatedBookingsRouteWithChildren
   AuthenticatedCommunityRoute: typeof AuthenticatedCommunityRouteWithChildren
@@ -445,11 +506,11 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedProviderRoute: typeof AuthenticatedProviderRouteWithChildren
   AuthenticatedProvidersRoute: typeof AuthenticatedProvidersRouteWithChildren
   AuthenticatedRoleRoute: typeof AuthenticatedRoleRoute
-  AuthenticatedServicesRoute: typeof AuthenticatedServicesRoute
   AuthenticatedRequestCategoryRoute: typeof AuthenticatedRequestCategoryRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
   AuthenticatedAssistantRoute: AuthenticatedAssistantRoute,
   AuthenticatedBookingsRoute: AuthenticatedBookingsRouteWithChildren,
   AuthenticatedCommunityRoute: AuthenticatedCommunityRouteWithChildren,
@@ -457,7 +518,6 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedProviderRoute: AuthenticatedProviderRouteWithChildren,
   AuthenticatedProvidersRoute: AuthenticatedProvidersRouteWithChildren,
   AuthenticatedRoleRoute: AuthenticatedRoleRoute,
-  AuthenticatedServicesRoute: AuthenticatedServicesRoute,
   AuthenticatedRequestCategoryRoute: AuthenticatedRequestCategoryRoute,
 }
 
@@ -467,8 +527,11 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  ContactRoute: ContactRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

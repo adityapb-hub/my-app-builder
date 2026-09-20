@@ -14,13 +14,13 @@ export const Route = createFileRoute(
   },
   head: () => ({
     meta: [
-      { title: "Service details — CoopConnect" },
+      { title: "Service details — HomeEase" },
       {
         name: "description",
         content:
           "Describe the problem, add photos, pick a time and share your location to get local workers moving.",
       },
-      { property: "og:title", content: "Service details — CoopConnect" },
+      { property: "og:title", content: "Service details — HomeEase" },
       {
         property: "og:description",
         content: "Describe the job, add photos, choose a time and location.",

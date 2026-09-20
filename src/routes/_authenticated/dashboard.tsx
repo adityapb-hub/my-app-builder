@@ -22,13 +22,13 @@ import {
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
-      { title: "Your desk — CoopConnect" },
+      { title: "Your desk — HomeEase" },
       {
         name: "description",
         content:
-          "Your CoopConnect home: active bookings, jobs, earnings and community tasks.",
+          "Your HomeEase home: active bookings, jobs, earnings and community tasks.",
       },
-      { property: "og:title", content: "Your desk — CoopConnect" },
+      { property: "og:title", content: "Your desk — HomeEase" },
       {
         property: "og:description",
         content: "Active bookings, jobs and community tasks in one place.",

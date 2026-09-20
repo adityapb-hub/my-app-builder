@@ -13,13 +13,13 @@ import { formatRupees } from "@/lib/catalog";
 export const Route = createFileRoute("/_authenticated/bookings")({
   head: () => ({
     meta: [
-      { title: "My bookings — CoopConnect" },
+      { title: "My bookings — HomeEase" },
       {
         name: "description",
         content:
           "Track every service request you've sent or accepted, with status, worker and price.",
       },
-      { property: "og:title", content: "My bookings — CoopConnect" },
+      { property: "og:title", content: "My bookings — HomeEase" },
       {
         property: "og:description",
         content: "Every request and job in one list, with live status.",

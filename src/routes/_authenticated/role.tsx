@@ -10,13 +10,13 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/_authenticated/role")({
   head: () => ({
     meta: [
-      { title: "Who are you? — CoopConnect" },
+      { title: "Who are you? — HomeEase" },
       {
         name: "description",
         content:
-          "Choose whether you're on CoopConnect to hire someone or to offer your services.",
+          "Choose whether you're on HomeEase to hire someone or to offer your services.",
       },
-      { property: "og:title", content: "Pick your side — CoopConnect" },
+      { property: "og:title", content: "Pick your side — HomeEase" },
       {
         property: "og:description",
         content: "Service Seeker or Service Provider — you can be both.",

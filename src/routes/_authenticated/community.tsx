@@ -30,13 +30,13 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/_authenticated/community")({
   head: () => ({
     meta: [
-      { title: "Community board — CoopConnect" },
+      { title: "Community board — HomeEase" },
       {
         name: "description",
         content:
           "Post a collective job for your society — cleaning drives, garbage collection, tree plantation, water tank maintenance — and let households join and split the cost.",
       },
-      { property: "og:title", content: "Community board — CoopConnect" },
+      { property: "og:title", content: "Community board — HomeEase" },
       {
         property: "og:description",
         content: "Collective neighbourhood jobs that households join and split.",

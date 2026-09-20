@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
-const SYSTEM = `You are the intake assistant for CoopConnect, a neighbourhood services
+const SYSTEM = `You are the intake assistant for HomeEase, a neighbourhood services
 platform in India. The user describes a household problem in plain language.
 
 Reply with JSON only, matching exactly this shape:

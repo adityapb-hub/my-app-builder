@@ -18,13 +18,13 @@ export const Route = createFileRoute("/_authenticated/providers")({
   }),
   head: () => ({
     meta: [
-      { title: "Nearby workers — CoopConnect" },
+      { title: "Nearby workers — HomeEase" },
       {
         name: "description",
         content:
           "Compare verified local service providers by distance, rating and starting price.",
       },
-      { property: "og:title", content: "Nearby workers — CoopConnect" },
+      { property: "og:title", content: "Nearby workers — HomeEase" },
       {
         property: "og:description",
         content: "Verified local workers, sorted by distance and rating.",
@@ -74,7 +74,7 @@ function ProvidersPage() {
         </h1>
         <p className="mt-2 max-w-[54ch] text-muted-foreground">
           Every profile shows a starting price and ratings from neighbours who
-          actually hired them. Nobody pays CoopConnect a cut.
+          actually hired them. Nobody pays HomeEase a cut.
         </p>
       </header>
 

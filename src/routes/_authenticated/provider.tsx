@@ -28,13 +28,13 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/_authenticated/provider")({
   head: () => ({
     meta: [
-      { title: "Job desk — CoopConnect providers" },
+      { title: "Job desk — HomeEase providers" },
       {
         name: "description",
         content:
           "Incoming job requests, today's schedule and your earnings at a glance.",
       },
-      { property: "og:title", content: "Job desk — CoopConnect providers" },
+      { property: "og:title", content: "Job desk — HomeEase providers" },
       {
         property: "og:description",
         content: "Accept work, manage your schedule and see what you've earned.",

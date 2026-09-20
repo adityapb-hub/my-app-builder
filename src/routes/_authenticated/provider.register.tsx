@@ -40,7 +40,9 @@ function ProviderRegister() {
 
   const [displayName, setDisplayName] = useState(profile?.full_name ?? "");
   const [phone, setPhone] = useState("");
-  const [category, setCategory] = useState(CATEGORIES[0].id);
+  const [category, setCategory] = useState<string>(
+    CATEGORIES[0]?.id ?? "plumbing",
+  );
   const [area, setArea] = useState("");
   const [bio, setBio] = useState("");
   const [services, setServices] = useState("");

@@ -16,6 +16,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAssistantRouteImport } from './routes/_authenticated/assistant'
 import { Route as AuthenticatedBookingsRouteImport } from './routes/_authenticated/bookings'
 import { Route as AuthenticatedCommunityRouteImport } from './routes/_authenticated/community'
@@ -63,6 +64,11 @@ const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedAssistantRoute = AuthenticatedAssistantRouteImport.update({
   id: '/assistant',
@@ -142,6 +148,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/assistant': typeof AuthenticatedAssistantRoute
   '/bookings': typeof AuthenticatedBookingsRouteWithChildren
   '/community': typeof AuthenticatedCommunityRouteWithChildren
@@ -163,6 +170,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/assistant': typeof AuthenticatedAssistantRoute
   '/bookings': typeof AuthenticatedBookingsRouteWithChildren
   '/community': typeof AuthenticatedCommunityRouteWithChildren
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/reset-password': typeof ResetPasswordRoute
   '/services': typeof ServicesRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/assistant': typeof AuthenticatedAssistantRoute
   '/_authenticated/bookings': typeof AuthenticatedBookingsRouteWithChildren
   '/_authenticated/community': typeof AuthenticatedCommunityRouteWithChildren
@@ -209,6 +218,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/reset-password'
     | '/services'
+    | '/admin'
     | '/assistant'
     | '/bookings'
     | '/community'
@@ -230,6 +240,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/reset-password'
     | '/services'
+    | '/admin'
     | '/assistant'
     | '/bookings'
     | '/community'
@@ -252,6 +263,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/reset-password'
     | '/services'
+    | '/_authenticated/admin'
     | '/_authenticated/assistant'
     | '/_authenticated/bookings'
     | '/_authenticated/community'
@@ -327,6 +339,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/assistant': {
       id: '/_authenticated/assistant'
@@ -479,6 +498,7 @@ const AuthenticatedProvidersRouteWithChildren =
   )
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
   AuthenticatedAssistantRoute: typeof AuthenticatedAssistantRoute
   AuthenticatedBookingsRoute: typeof AuthenticatedBookingsRouteWithChildren
   AuthenticatedCommunityRoute: typeof AuthenticatedCommunityRouteWithChildren
@@ -490,6 +510,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
   AuthenticatedAssistantRoute: AuthenticatedAssistantRoute,
   AuthenticatedBookingsRoute: AuthenticatedBookingsRouteWithChildren,
   AuthenticatedCommunityRoute: AuthenticatedCommunityRouteWithChildren,

@@ -40,13 +40,13 @@ const EXAMPLES = [
 export const Route = createFileRoute("/_authenticated/assistant")({
   head: () => ({
     meta: [
-      { title: "Smart assistant — CoopConnect" },
+      { title: "Smart assistant — HomeEase" },
       {
         name: "description",
         content:
           "Describe your household problem in plain words and get the right service category, a fair price range and nearby experts.",
       },
-      { property: "og:title", content: "Smart assistant — CoopConnect" },
+      { property: "og:title", content: "Smart assistant — HomeEase" },
       {
         property: "og:description",
         content: "Plain words in, category and fair price range out.",

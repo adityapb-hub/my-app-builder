@@ -82,16 +82,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CoopConnect — trusted local services for your neighbourhood" },
+      { title: "HomeEase — trusted local services for your neighbourhood" },
       {
         name: "description",
         content:
           "Book vetted plumbers, electricians, tutors and carers, manage your work as a provider, and run community jobs your whole society can join and split.",
       },
-      { name: "author", content: "CoopConnect" },
+      { name: "author", content: "HomeEase" },
       {
         property: "og:title",
-        content: "CoopConnect — trusted local services for your neighbourhood",
+        content: "HomeEase — trusted local services for your neighbourhood",
       },
       {
         property: "og:description",
@@ -99,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Transparent prices, verified local workers and a community board for collective jobs.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "CoopConnect" },
+      { property: "og:site_name", content: "HomeEase" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#2563EB" },
     ],

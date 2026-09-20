@@ -43,7 +43,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </span>
             <span className="flex flex-col leading-none">
               <span className="font-display text-[17px] font-bold tracking-tight">
-                CoopConnect
+                HomeEase
               </span>
               <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Neighbourhood services
@@ -105,7 +105,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-border/70 bg-surface">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-6 text-sm text-muted-foreground sm:px-6">
           <p className="font-display text-[15px] font-semibold text-foreground">
-            CoopConnect
+            HomeEase
           </p>
           <p>Connecting communities with trusted local services.</p>
         </div>

@@ -11,12 +11,12 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/reset-password")({
   head: () => ({
     meta: [
-      { title: "Set a new password — CoopConnect" },
+      { title: "Set a new password — HomeEase" },
       {
         name: "description",
-        content: "Choose a new password for your CoopConnect account.",
+        content: "Choose a new password for your HomeEase account.",
       },
-      { property: "og:title", content: "Set a new password — CoopConnect" },
+      { property: "og:title", content: "Set a new password — HomeEase" },
       {
         property: "og:description",
         content: "Choose a new password to get back into your account.",

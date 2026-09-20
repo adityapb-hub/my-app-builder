@@ -30,7 +30,7 @@ function haversineKm(a: [number, number], b: [number, number]) {
 }
 
 /**
- * CoopConnect does not stream a worker's GPS position — it publishes the area
+ * HomeEase does not stream a worker's GPS position — it publishes the area
  * they work from, so the map draws the route between that area and the job.
  */
 export function TrackingPanel({ booking }: { booking: Booking }) {
@@ -89,7 +89,7 @@ export function TrackingPanel({ booking }: { booking: Booking }) {
         <p className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground">
           <Info className="size-3" />
           Approximate route between {worker?.area ?? "the worker"}'s area and your
-          job — CoopConnect doesn't track a live GPS feed.
+          job — HomeEase doesn't track a live GPS feed.
         </p>
       </div>
     </div>

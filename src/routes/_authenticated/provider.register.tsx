@@ -14,13 +14,13 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/_authenticated/provider/register")({
   head: () => ({
     meta: [
-      { title: "Register as a provider — CoopConnect" },
+      { title: "Register as a provider — HomeEase" },
       {
         name: "description",
         content:
           "Publish your skills, set your own hourly rate and upload your ID so neighbours can hire you directly.",
       },
-      { property: "og:title", content: "Register as a provider — CoopConnect" },
+      { property: "og:title", content: "Register as a provider — HomeEase" },
       {
         property: "og:description",
         content: "Set your rate, list your skills, keep 100% of what you earn.",
@@ -108,7 +108,7 @@ function ProviderRegister() {
         user_id: uid,
         display_name: displayName.trim(),
         category,
-        area: area.trim() || "Kolkata",
+        area: area.trim() || "Tumakuru",
         bio: bio.trim() || "Local professional taking on nearby jobs.",
         skills: [...services.split(","), ...languages.split(",")]
           .map((item) => item.trim())
@@ -153,7 +153,7 @@ function ProviderRegister() {
           Set up your profile
         </h1>
         <p className="mt-2 max-w-[52ch] text-muted-foreground">
-          You set the rate. Neighbours see it before they ask. CoopConnect
+          You set the rate. Neighbours see it before they ask. HomeEase
           doesn't take a cut.
         </p>
       </header>

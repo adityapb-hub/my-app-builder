@@ -37,13 +37,13 @@ export const Route = createFileRoute("/_authenticated/community/$id")({
   ),
   head: () => ({
     meta: [
-      { title: "Community task — CoopConnect" },
+      { title: "Community task — HomeEase" },
       {
         name: "description",
         content:
           "See who's joined a collective neighbourhood job, add your home, and keep it moving.",
       },
-      { property: "og:title", content: "Community task — CoopConnect" },
+      { property: "og:title", content: "Community task — HomeEase" },
       {
         property: "og:description",
         content: "Join, vote and track a collective job for your society.",

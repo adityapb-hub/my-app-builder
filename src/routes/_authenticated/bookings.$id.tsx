@@ -43,13 +43,13 @@ export const Route = createFileRoute("/_authenticated/bookings/$id")({
   ),
   head: () => ({
     meta: [
-      { title: "Booking — CoopConnect" },
+      { title: "Booking — HomeEase" },
       {
         name: "description",
         content:
           "Confirm details, follow the worker's route, chat, and leave a review.",
       },
-      { property: "og:title", content: "Booking — CoopConnect" },
+      { property: "og:title", content: "Booking — HomeEase" },
       {
         property: "og:description",
         content: "Route, chat and review for your service request.",
@@ -194,7 +194,7 @@ function BookingDetail() {
               </p>
               <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Clock className="size-3.5" />
-                Paid directly to the worker — CoopConnect took nothing.
+                Paid directly to the worker — HomeEase took nothing.
               </p>
             </section>
           ) : worker ? (

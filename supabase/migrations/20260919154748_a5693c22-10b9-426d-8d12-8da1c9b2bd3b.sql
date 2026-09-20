@@ -19,7 +19,7 @@ create table public.profiles (
   full_name text not null default '',
   phone text,
   avatar_url text,
-  city text not null default 'Kolkata',
+  city text not null default 'Tumakuru',
   area text,
   address text,
   created_at timestamptz not null default now(),
@@ -244,7 +244,7 @@ CREATE POLICY reviews_insert_own ON public.reviews FOR INSERT TO authenticated
 create table public.community_tasks (
   id uuid primary key default gen_random_uuid(),
   creator_id uuid references auth.users(id) on delete set null,
-  creator_name text not null default 'CoopConnect',
+  creator_name text not null default 'HomeEase',
   title text not null,
   description text,
   category text not null default 'maintenance',
@@ -363,9 +363,9 @@ values
   ('Arjun Bose','tutor','Maths and physics, classes 8 to 12. Weekend batches at your home.',array['Maths','Physics','JEE foundation','Board prep'],7,450,'Kestopur',3.6,true,4.9,88,120,true,'Mon, Wed, Sat, Sun evenings'),
   ('Priya Chatterjee','tutor','English and Bengali for primary years. Patient, story-based method.',array['English','Bengali','Reading','Spoken practice'],10,400,'Mukundapur',5.8,true,4.8,112,190,false,'Next slot: Monday 4pm'),
   ('Faizan Ahmed','appliance','Washing machines, fridges and ACs. Spare parts carried in the bag.',array['Washing machine','Refrigerator','AC service','Microwave'],13,500,'Beliaghata',4.7,true,4.7,205,365,true,'Mon-Sun, 9am-8pm'),
-  ('Subhash Panda','appliance','Chimney, hob and water purifier servicing across south Kolkata.',array['Chimney','Gas hob','Water purifier','Geyser'],9,420,'Gariahat',6.9,true,4.5,71,148,true,'Mon-Sat, 10am-7pm'),
+  ('Subhash Panda','appliance','Chimney, hob and water purifier servicing across south Tumakuru.',array['Chimney','Gas hob','Water purifier','Geyser'],9,420,'Gariahat',6.9,true,4.5,71,148,true,'Mon-Sat, 10am-7pm'),
   ('Meera Iyer','elder-care','Trained caregiver: companionship, medication timing and mobility help.',array['Companionship','Medication','Mobility support','Hospital escort'],14,600,'Salt Lake Sector 1',1.2,true,5.0,134,260,true,'24x7 on request'),
-  ('Kolkata Care Team','elder-care','Two-nurse team for post-discharge recovery at home.',array['Post-discharge','Wound dressing','Physio assist','Night care'],12,750,'Bhadureswar',5.1,true,4.6,52,96,true,'Rotating shifts'),
+  ('Tumakuru Care Team','elder-care','Two-nurse team for post-discharge recovery at home.',array['Post-discharge','Wound dressing','Physio assist','Night care'],12,750,'Bhadureswar',5.1,true,4.6,52,96,true,'Rotating shifts'),
   ('Tufan Sarkar','painting','Interior repainting and putty work. Free colour trial patches.',array['Interior paint','Putty','Waterproofing','Texture'],16,380,'Dum Dum',7.4,true,4.7,91,178,true,'Mon-Sat, 8am-6pm'),
   ('GreenVan Movers','moving','Two helpers, one van. Furniture packing and society shifting.',array['Packing','Furniture move','Van rental','Unloading'],6,900,'Tala',8.2,true,4.4,48,112,true,'Mon-Sat, 6am-8pm');
 

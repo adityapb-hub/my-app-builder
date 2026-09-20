@@ -40,13 +40,13 @@ export const Route = createFileRoute("/_authenticated/providers/$id")({
   ),
   head: () => ({
     meta: [
-      { title: "Worker profile — CoopConnect" },
+      { title: "Worker profile — HomeEase" },
       {
         name: "description",
         content:
           "Skills, experience, hourly rate and real reviews from neighbours nearby.",
       },
-      { property: "og:title", content: "Worker profile — CoopConnect" },
+      { property: "og:title", content: "Worker profile — HomeEase" },
       {
         property: "og:description",
         content: "Check ratings and reviews before you hire someone local.",
@@ -157,7 +157,7 @@ function ProviderProfilePage() {
             icon={Briefcase}
             label="Experience"
             value={`${provider.experience_years} yr`}
-            sub={provider.jobs_completed > 0 ? `${provider.jobs_completed} jobs done` : "new on CoopConnect"}
+            sub={provider.jobs_completed > 0 ? `${provider.jobs_completed} jobs done` : "new on HomeEase"}
           />
           <Panel
             icon={ShieldCheck}
@@ -213,7 +213,7 @@ function ProviderProfilePage() {
                   </p>
                 )}
                 <p className="mt-2 text-xs text-muted-foreground">
-                  A neighbour · via CoopConnect
+                  A neighbour · via HomeEase
                 </p>
               </li>
             ))}

@@ -13,13 +13,13 @@ import { lovable } from "@/integrations/lovable";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Log in or register — CoopConnect" },
+      { title: "Log in or register — HomeEase" },
       {
         name: "description",
         content:
-          "Sign in to CoopConnect with email, a password, or your Google account to book local services or offer your own.",
+          "Sign in to HomeEase with email, a password, or your Google account to book local services or offer your own.",
       },
-      { property: "og:title", content: "Sign in to CoopConnect" },
+      { property: "og:title", content: "Sign in to HomeEase" },
       {
         property: "og:description",
         content: "Email, password or Google — then pick your side of the board.",
@@ -146,7 +146,7 @@ function AuthPage() {
       <div className="hidden lg:block">
         <span className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3 py-1.5 text-xs font-semibold text-brand-ink">
           <Handshake className="size-3.5" />
-          CoopConnect
+          HomeEase
         </span>
         <h1 className="mt-6 font-display text-4xl font-extrabold leading-tight tracking-tight text-balance">
           Welcome to your neighbourhood board.

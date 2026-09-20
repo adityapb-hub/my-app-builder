@@ -9,13 +9,13 @@ import { formatRupees } from "@/lib/catalog";
 export const Route = createFileRoute("/_authenticated/provider/earnings")({
   head: () => ({
     meta: [
-      { title: "Earnings — CoopConnect providers" },
+      { title: "Earnings — HomeEase providers" },
       {
         name: "description",
         content:
           "Your day, week and month totals with a full ledger of completed jobs.",
       },
-      { property: "og:title", content: "Earnings — CoopConnect providers" },
+      { property: "og:title", content: "Earnings — HomeEase providers" },
       {
         property: "og:description",
         content: "See what you earned, job by job — no commission taken out.",

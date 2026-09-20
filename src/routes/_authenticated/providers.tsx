@@ -12,8 +12,8 @@ type Search = { category?: string };
 export const Route = createFileRoute("/_authenticated/providers")({
   validateSearch: (search: Record<string, unknown>): Search => ({
     category:
-      typeof search.category === "string" && search.category
-        ? search.category
+      typeof search["category"] === "string" && search["category"]
+        ? (search["category"] as string)
         : undefined,
   }),
   head: () => ({
@@ -53,8 +53,8 @@ function ProvidersPage() {
         (provider) =>
           !term ||
           provider.display_name.toLowerCase().includes(term) ||
-          provider.area.toLowerCase().includes(term) ||
-          provider.bio.toLowerCase().includes(term),
+          (provider.area ?? "").toLowerCase().includes(term) ||
+          (provider.bio ?? "").toLowerCase().includes(term),
       )
       .sort((a, b) => {
         if (sort === "top") return Number(b.rating) - Number(a.rating);

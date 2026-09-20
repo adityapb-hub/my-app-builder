@@ -88,21 +88,13 @@ export function ProviderCard({
         </p>
         {action === "link" ? (
           <Button asChild variant="outline" size="sm" className="rounded-full">
-            <Link
-              to="/providers/$id"
-              params={{ id: provider.id }}
-              search={{ from: "browse" }}
-            >
+            <Link to="/providers/$id" params={{ id: provider.id }}>
               View profile
             </Link>
           </Button>
         ) : (
           <Button asChild size="sm" className="rounded-full">
-            <Link
-              to="/providers/$id"
-              params={{ id: provider.id }}
-              search={{ from: "hire" }}
-            >
+            <Link to="/providers/$id" params={{ id: provider.id }}>
               Hire
             </Link>
           </Button>

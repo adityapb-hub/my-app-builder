@@ -77,11 +77,7 @@ function AssistantPage() {
     setAdvice(null);
     try {
       const result = await advise({ data: { problem: problem.trim() } });
-      if (!result.success) {
-        toast.error("That didn't come out useful. Try rephrasing it.");
-        return;
-      }
-      setAdvice(result.data as Advice);
+      setAdvice(result as Advice);
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : "The assistant is unavailable.",

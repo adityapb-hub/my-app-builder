@@ -88,7 +88,15 @@ function BookingDetail() {
   const worker = booking.provider;
   const stepIndex = STEPS.indexOf(booking.status);
 
-  async function patch(values: Record<string, unknown>, label: string, success?: string) {
+  async function patch(
+    values: {
+      status?: string;
+      provider_id?: string | null;
+      final_price?: number | null;
+    },
+    label: string,
+    success?: string,
+  ) {
     setBusy(label);
     const { error } = await supabase
       .from("service_requests")

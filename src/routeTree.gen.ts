@@ -20,7 +20,6 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedProviderRouteImport } from './routes/_authenticated/provider'
 import { Route as AuthenticatedProvidersRouteImport } from './routes/_authenticated/providers'
 import { Route as AuthenticatedRoleRouteImport } from './routes/_authenticated/role'
-import { Route as AuthenticatedServicesRouteImport } from './routes/_authenticated/services'
 import { Route as AuthenticatedBookingsIdRouteImport } from './routes/_authenticated/bookings.$id'
 import { Route as AuthenticatedCommunityIdRouteImport } from './routes/_authenticated/community.$id'
 import { Route as AuthenticatedProviderEarningsRouteImport } from './routes/_authenticated/provider.earnings'
@@ -82,11 +81,6 @@ const AuthenticatedRoleRoute = AuthenticatedRoleRouteImport.update({
   path: '/role',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const AuthenticatedServicesRoute = AuthenticatedServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedBookingsIdRoute = AuthenticatedBookingsIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -134,7 +128,6 @@ export interface FileRoutesByFullPath {
   '/provider': typeof AuthenticatedProviderRouteWithChildren
   '/providers': typeof AuthenticatedProvidersRouteWithChildren
   '/role': typeof AuthenticatedRoleRoute
-  '/services': typeof AuthenticatedServicesRoute
   '/bookings/$id': typeof AuthenticatedBookingsIdRoute
   '/community/$id': typeof AuthenticatedCommunityIdRoute
   '/provider/earnings': typeof AuthenticatedProviderEarningsRoute
@@ -153,7 +146,6 @@ export interface FileRoutesByTo {
   '/provider': typeof AuthenticatedProviderRouteWithChildren
   '/providers': typeof AuthenticatedProvidersRouteWithChildren
   '/role': typeof AuthenticatedRoleRoute
-  '/services': typeof AuthenticatedServicesRoute
   '/bookings/$id': typeof AuthenticatedBookingsIdRoute
   '/community/$id': typeof AuthenticatedCommunityIdRoute
   '/provider/earnings': typeof AuthenticatedProviderEarningsRoute
@@ -174,7 +166,6 @@ export interface FileRoutesById {
   '/_authenticated/provider': typeof AuthenticatedProviderRouteWithChildren
   '/_authenticated/providers': typeof AuthenticatedProvidersRouteWithChildren
   '/_authenticated/role': typeof AuthenticatedRoleRoute
-  '/_authenticated/services': typeof AuthenticatedServicesRoute
   '/_authenticated/bookings/$id': typeof AuthenticatedBookingsIdRoute
   '/_authenticated/community/$id': typeof AuthenticatedCommunityIdRoute
   '/_authenticated/provider/earnings': typeof AuthenticatedProviderEarningsRoute
@@ -195,7 +186,6 @@ export interface FileRouteTypes {
     | '/provider'
     | '/providers'
     | '/role'
-    | '/services'
     | '/bookings/$id'
     | '/community/$id'
     | '/provider/earnings'
@@ -214,7 +204,6 @@ export interface FileRouteTypes {
     | '/provider'
     | '/providers'
     | '/role'
-    | '/services'
     | '/bookings/$id'
     | '/community/$id'
     | '/provider/earnings'
@@ -234,7 +223,6 @@ export interface FileRouteTypes {
     | '/_authenticated/provider'
     | '/_authenticated/providers'
     | '/_authenticated/role'
-    | '/_authenticated/services'
     | '/_authenticated/bookings/$id'
     | '/_authenticated/community/$id'
     | '/_authenticated/provider/earnings'
@@ -327,13 +315,6 @@ declare module '@tanstack/react-router' {
       path: '/role'
       fullPath: '/role'
       preLoaderRoute: typeof AuthenticatedRoleRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/services': {
-      id: '/_authenticated/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof AuthenticatedServicesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/bookings/$id': {
@@ -445,7 +426,6 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedProviderRoute: typeof AuthenticatedProviderRouteWithChildren
   AuthenticatedProvidersRoute: typeof AuthenticatedProvidersRouteWithChildren
   AuthenticatedRoleRoute: typeof AuthenticatedRoleRoute
-  AuthenticatedServicesRoute: typeof AuthenticatedServicesRoute
   AuthenticatedRequestCategoryRoute: typeof AuthenticatedRequestCategoryRoute
 }
 
@@ -457,7 +437,6 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedProviderRoute: AuthenticatedProviderRouteWithChildren,
   AuthenticatedProvidersRoute: AuthenticatedProvidersRouteWithChildren,
   AuthenticatedRoleRoute: AuthenticatedRoleRoute,
-  AuthenticatedServicesRoute: AuthenticatedServicesRoute,
   AuthenticatedRequestCategoryRoute: AuthenticatedRequestCategoryRoute,
 }
 

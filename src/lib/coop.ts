@@ -82,6 +82,7 @@ export type CommunityTask = {
   status: string;
   created_at: string;
   joined?: boolean;
+  voted?: boolean;
 };
 
 export type ChatMessage = {

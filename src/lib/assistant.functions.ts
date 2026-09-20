@@ -79,5 +79,9 @@ export const assistantAdvise = createServerFn({ method: "POST" })
       throw new Error("The assistant couldn't make sense of that. Try again.");
     }
 
-    return parsed.safeParse(JSON.parse(text.slice(start, end + 1)));
+    const result = parsed.safeParse(JSON.parse(text.slice(start, end + 1)));
+    if (!result.success) {
+      throw new Error("The assistant couldn't make sense of that. Try again.");
+    }
+    return result.data;
   });

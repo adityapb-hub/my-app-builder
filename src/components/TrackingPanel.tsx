@@ -1,5 +1,5 @@
 import { lazy, Suspense, useMemo } from "react";
-import { ClientOnly } from "next-themes";
+import { ClientOnly } from "@tanstack/react-router";
 import { Info, MapPin, Navigation } from "lucide-react";
 
 import type { Booking } from "@/lib/coop";

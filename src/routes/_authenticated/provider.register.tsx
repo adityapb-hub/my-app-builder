@@ -40,7 +40,9 @@ function ProviderRegister() {
 
   const [displayName, setDisplayName] = useState(profile?.full_name ?? "");
   const [phone, setPhone] = useState("");
-  const [category, setCategory] = useState(CATEGORIES[0].id);
+  const [category, setCategory] = useState<string>(
+    CATEGORIES[0]?.id ?? "plumbing",
+  );
   const [area, setArea] = useState("");
   const [bio, setBio] = useState("");
   const [services, setServices] = useState("");
@@ -102,27 +104,26 @@ function ProviderRegister() {
       const idPath = await upload(idFile, "id");
       const certPath = certFile ? await upload(certFile, "certificate") : null;
 
-      const { error } = await supabase.from("providers").insert({
+      const { error } = await supabase.from("service_providers").insert({
         user_id: uid,
         display_name: displayName.trim(),
-        phone: phone.trim(),
         category,
         area: area.trim() || "Kolkata",
         bio: bio.trim() || "Local professional taking on nearby jobs.",
-        services: services
-          .split(",")
+        skills: [...services.split(","), ...languages.split(",")]
           .map((item) => item.trim())
           .filter(Boolean),
-        languages: languages
-          .split(",")
-          .map((item) => item.trim())
-          .filter(Boolean),
-        years_experience: Number(experience || 0),
+        experience_years: Number(experience || 0),
         hourly_rate: Number(rate || 0),
-        id_document_path: idPath,
-        certificate_path: certPath,
+        id_document_url: idPath,
+        certificate_url: certPath,
       });
       if (error) throw error;
+
+      await supabase
+        .from("profiles")
+        .update({ phone: phone.trim() })
+        .eq("id", uid);
 
       const { error: roleError } = await supabase
         .from("user_roles")

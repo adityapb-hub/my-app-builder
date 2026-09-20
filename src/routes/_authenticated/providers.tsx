@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { useProviders } from "@/lib/coop";
 import { CATEGORIES } from "@/lib/catalog";
 
-type Search = { category: string | undefined };
+type Search = { category?: string | undefined };
 
 export const Route = createFileRoute("/_authenticated/providers")({
   validateSearch: (search: Record<string, unknown>): Search => ({

@@ -1,7 +1,7 @@
-# CoopConnect — build roadmap
+# HomeEase — build roadmap
 
 ## Locked decisions
-- Theme: primary #2563EB, secondary #10B981, white background, #F8FAFC cards
+- Theme: vivid red accents, near-black background, deep charcoal cards
 - Audience: general public, sign-in required for personal data
 - Three roles: Service Seeker, Service Provider, Community
 - AI Smart Assistant for "describe your problem" → category + cost estimate + nearby experts
